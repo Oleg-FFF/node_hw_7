@@ -1,0 +1,16 @@
+extends template
+block content
+    div.create_message
+        p Hello #{userName}!
+        | Congratulations, the product:
+        br
+        | id: #{productId},
+        br
+        | type: #{productType},
+        br
+        | brand: #{productBrand},
+        br
+        | price: #{productPrice}
+        br
+        | was successfully created!
+

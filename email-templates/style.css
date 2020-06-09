@@ -1,0 +1,38 @@
+.header {
+    background-color: beige;
+    width: 500px;
+    height: 100px;
+    font-family: "Arial Black", serif;
+    border-bottom: 2px black solid;
+}
+
+.create_message {
+    background-color: aquamarine;
+    width: 500px;
+    height: 100%;
+    font-family: "Arial Black", serif;
+    border-bottom: 2px black solid;
+}
+
+.update_message {
+    background-color: lightpink;
+    width: 500px;
+    height: 100%;
+    font-family: "Arial Black", serif;
+    border-bottom: 2px black solid;
+}
+
+.del_message {
+    background-color: darkgrey;
+    width: 500px;
+    height: 100%;
+    font-family: "Arial Black", serif;
+    border-bottom: 2px black solid;
+}
+
+.footer {
+    background-color: beige;
+    width: 500px;
+    height: 100px;
+    font-family: "Arial Black", serif;
+}

@@ -1,0 +1,13 @@
+extends template
+block content
+    div.update_message
+        p Hello #{userName}!
+        | Congratulations, the product:
+        br
+        | type: #{productType},
+        br
+        | brand: #{productBrand},
+        br
+        | price: #{productPrice}
+        br
+        | was successfully updated!

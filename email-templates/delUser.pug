@@ -1,0 +1,11 @@
+extends template
+block content
+    div.del_message
+        p Hello #{userName}!
+        | Congratulations, your account:
+        br
+        | name: #{userName},
+        br
+        | email: #{userEmail},
+        br
+        | was successfully deleted!
