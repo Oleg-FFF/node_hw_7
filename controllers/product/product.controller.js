@@ -1,12 +1,13 @@
-const {emailActionsEnum} = require('../../constants')
-const {emailService, userService} = require('../../services')
-const {productService} = require('../../services')
-const {hashCouponCode, checkHashCouponCode} = require('../../helpers')
-const ErrorHandler = require('../../error/ErrorHandler')
+const {emailActionsEnum, responseStatusCodesEnum} = require('../../constants');
+const {emailService, userService} = require('../../services');
+const {productService} = require('../../services');
+const {hashCouponCode, checkHashCouponCode} = require('../../helpers');
+const {ErrorHandler, Errors} = require('../../error');
 
 module.exports = {
     getAllProducts: async (req, res) => {
         const products = await productService.getAllProducts();
+
         res.json({products});
     },
 
@@ -25,13 +26,13 @@ module.exports = {
 
 
         if (!product){
-            return next(new ErrorHandler('Product not exist', 404, 4015))
+            return next(new ErrorHandler(Errors.NOT_FOUND.message, responseStatusCodesEnum.NOT_FOUND, Errors.NOT_FOUND.code))
         }
 
         const checkCoupon = await checkHashCouponCode(couponCode, product.coupon_code);
 
         if (!checkCoupon){
-            return next(new ErrorHandler('Coupon code is not valid', 404, 4020))
+            return next(new ErrorHandler(Errors.NOT_VALID_COUPON.message, responseStatusCodesEnum.NOT_FOUND, Errors.NOT_VALID_COUPON.code))
         }
 
         res.end(`Your sale price is ${product.sale_price}`)

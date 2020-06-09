@@ -1,7 +1,7 @@
-const {emailActionsEnum} = require('../../constants')
-const {emailService, userService} = require('../../services')
-const {hashPassword, checkHashPassword} = require('../../helpers')
-const ErrorHandler = require('../../error/ErrorHandler')
+const {emailActionsEnum, responseStatusCodesEnum} = require('../../constants');
+const {emailService, userService} = require('../../services');
+const {hashPassword, checkHashPassword} = require('../../helpers');
+const {ErrorHandler, Errors} = require('../../error');
 
 module.exports = {
     getAllUsers: async (req, res) => {
@@ -76,7 +76,7 @@ module.exports = {
         const user = await userService.getUserByParams({email});
 
         if (!user) {
-            return next(new ErrorHandler('User is not found', 404, 4041));
+            return next(new ErrorHandler(Errors.NOT_FOUND.message, responseStatusCodesEnum.NOT_FOUND, Errors.NOT_FOUND.code));
         }
 
         await checkHashPassword(user.password, password);
